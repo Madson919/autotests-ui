@@ -30,8 +30,8 @@ class CoursesListPage(BasePage):
         self.empty_view_description = page.get_by_test_id('courses-list-empty-view-description-text')
 
     def check_visible_courses_title(self) -> None:
-        expect(self.course_title).to_be_visible()
-        expect(self.course_title).to_have_text("Courses")
+        expect(self.courses_title).to_be_visible()
+        expect(self.courses_title).to_have_text("Courses")
 
     def check_visible_empty_view(self) -> None:
         expect(self.empty_view_icon).to_be_visible()
@@ -65,7 +65,7 @@ class CoursesListPage(BasePage):
         expect(self.course_max_score_text.nth(index)).to_have_text(f"Max score: {max_score}")
 
         expect(self.course_min_score_text.nth(index)).to_be_visible()
-        expect(self.course_min_score_text.nth(index)).to_have_text(f"Max score: {min_score}")
+        expect(self.course_min_score_text.nth(index)).to_have_text(f"Min score: {min_score}")
 
         expect(self.course_estimated_time_text.nth(index)).to_be_visible()
         expect(self.course_estimated_time_text.nth(index)).to_have_text(f"Estimated time: {estimated_time}")
