@@ -1,3 +1,5 @@
+import allure
+
 from components.base_component import BaseComponent
 from elements.input import Input
 
@@ -13,6 +15,7 @@ class RegistrationFormComponent(BaseComponent):
         self.username_input = Input(page, 'registration-form-username-input', "Username")
         self.password_input = Input(page, 'registration-form-password-input', "Username")
 
+    @allure.step("Fill registration form")
     def fill(
             self,
             email: str,
@@ -25,6 +28,7 @@ class RegistrationFormComponent(BaseComponent):
 
         self.password_input.fill(password)
 
+    @allure.step("Check visible registration form")
     def check_visible(
             self,
             email: str,
