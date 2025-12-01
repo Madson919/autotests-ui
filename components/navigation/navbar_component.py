@@ -1,3 +1,4 @@
+import allure
 from components.base_component import BaseComponent
 from elements.text import Text
 
@@ -10,6 +11,7 @@ class NavbarComponent(BaseComponent):
         self.app_title = Text(page, "navigation-navbar-app-title-text", "App")
         self.welcome_title = Text(page, "navigation-navbar-welcome-title-text", "Welcome")
 
+    @allure.step('Check visible navbar {username}')
     def check_visible(self, username: str) -> None:
         self.app_title.check_visible()
         self.app_title.check_have_text("UI Course")
