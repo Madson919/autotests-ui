@@ -16,6 +16,9 @@ from tools.allure.tags import AllureTag
 @allure.epic(AllureEpic.LMS)
 @allure.feature(AllureFeature.AUTHENTIFICATION)
 @allure.story(AllureStory.REGISTRATION)
+@allure.parent_suite(AllureEpic.LMS)
+@allure.suite(AllureFeature.AUTHENTIFICATION)
+@allure.sub_suite(AllureStory.REGISTRATION)
 class TestRegistration:
 
     @allure.title("Registration with correct email, username and password")
