@@ -3,6 +3,7 @@ import pytest
 
 from allure_commons.types import Severity
 
+from config import settings
 from pages.dashboard.dashboard_page import DashboardPage
 from tools.allure.epics import AllureEpic
 from tools.allure.features import AllureFeature
@@ -25,7 +26,7 @@ class TestDashboard:
     @allure.severity(Severity.NORMAL)
     def test_dashboard_displaying(self, dashboard_page_with_state: DashboardPage) -> None:
         dashboard_page_with_state.visit("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/dashboard")
-        dashboard_page_with_state.navbar.check_visible(username="username")
+        dashboard_page_with_state.navbar.check_visible(username=settings.test_user.username)
         dashboard_page_with_state.sidebar.check_visible()
         dashboard_page_with_state.dashboard_toolbar_view.check_visible()
         dashboard_page_with_state.students_chart_view.check_visible("Students")
