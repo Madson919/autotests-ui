@@ -1,3 +1,6 @@
+import sys
+import platform
+
 from config import settings
 
 def create_allure_environment_file() -> None:
@@ -5,4 +8,6 @@ def create_allure_environment_file() -> None:
     properties = "\n".join(items)
 
     with open(settings.allure_results_dir.joinpath("environment.properties"), "w+") as file:
-        file.write(properties)
+        file.write(f"{properties}\n")
+        file.write(f"os_info={platform.system()}, {platform.release()}\n")
+        file.write(f"python_version={sys.version}\n")
