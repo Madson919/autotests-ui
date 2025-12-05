@@ -2,6 +2,7 @@ import allure
 import pytest
 from allure_commons.types import Severity
 
+from config import settings
 from pages.authentication.registration_page import RegistrationPage
 from pages.dashboard.dashboard_page import DashboardPage
 from tools.allure.epics import AllureEpic
@@ -22,14 +23,15 @@ from tools.routes import AppRoutes
 @allure.sub_suite(AllureStory.REGISTRATION)
 class TestRegistration:
 
+    @pytest.mark.xdist_group(name="authorization_group")
     @allure.title("Registration with correct email, username and password")
     @allure.severity(Severity.CRITICAL)
     def test_successful_registration(self, registration_page: RegistrationPage, dashboard_page: DashboardPage):
         registration_page.visit(AppRoutes.REGISTRATION)
         registration_page.registration_form.fill(
-            email="user@gmail.com",
-            username="username",
-            password="password"
+            email=settings.test_user.email,
+            username=settings.test_user.username,
+            password=settings.test_user.password
         )
         registration_page.click_registration_button()
         dashboard_page.dashboard_toolbar_view.check_visible()
