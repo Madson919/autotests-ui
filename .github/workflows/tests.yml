@@ -27,7 +27,7 @@ jobs:
           pip install -r requirements.txt
           playwright install --with-deps
 
-      - name: Run Playwright tsts with pytest and generate Allure results
+      - name: Run Playwright tests with pytest and generate Allure results
         run: |
           pytest -m regression --alluredir=./allure-results --numprocesses=2
 
@@ -52,4 +52,3 @@ jobs:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history
-          
